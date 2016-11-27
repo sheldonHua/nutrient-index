@@ -32,9 +32,20 @@ app.ajaxCall = function(searchTerm){
 	});	
 
 	$.when(nutritionApi, googleSearch).then(function(nutritionApiData, googleSearchData){
-		console.log(nutritionApiData,googleSearchData );
-	})		
+		
+
+		app.displayData(nutritionApiData[0].hits,googleSearchData[0].items);
+	});		
 }
+
+app.displayData = function(food, image){
+
+		console.log(food,image);
+
+
+}
+
+
 
 app.init = function(){
 	app.ajaxCall("burger");
