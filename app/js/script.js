@@ -3,9 +3,6 @@ var app = {};
 app.key = 'a6bb05d3c2ee035be37486ffa23ee061';
 app.id = '49ee0fd8';
 
-app.googleKey = "AIzaSyA6zMuLyh7L4KPbAVuzlNNrzo5WThY4NVg";
-app.searchEngineId = "013423621592567787184:r8jnaxylyeu"
-
 app.ajaxCall = function(searchTerm){
 	var nutritionApi = $.ajax({
 		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:10&fields=brand_name,nf_calories,item_name,brand_id`,
@@ -15,40 +12,47 @@ app.ajaxCall = function(searchTerm){
 			appKey: app.key,
 			appId: app.id,
 			format: 'json',
+		},
+		success: function(data){
+
+			app.displayData(data.hits);
 		}
 		
 	});	
-	var googleSearch = $.ajax({
-		url: `https://www.googleapis.com/customsearch/v1?parameters`,
-		type: 'GET',
-		dataType: 'json',
-		data:{
-			key: app.googleKey,
-			cx: app.searchEngineId,
-			q: searchTerm,
-			searchType: "image",
-			format: 'json',
-		},
-	});	
-
-	$.when(nutritionApi, googleSearch).then(function(nutritionApiData, googleSearchData){
-		
-
-		app.displayData(nutritionApiData[0].hits,googleSearchData[0].items);
-	});		
 }
 
-app.displayData = function(food, image){
+app.displayData = function(foods){
 
-		console.log(food,image);
+	var foodList = [];
+	for (var i = 0; i <= foods.length-1; i++){
+		var foodHTML = `
+			<div class="food">
+				<p>${foods[i].fields.item_name}</p>
+				<p>${foods[i].fields.brand_name}</p>
+				<p>Calories: ${foods[i].fields.nf_calories}</p>
+			</div>
+		`;
+
+		foodList.push(foodHTML);
+	}
+
+	
+
+	$('.food-container').append(foodList);
 
 
 }
-
-
 
 app.init = function(){
-	app.ajaxCall("burger");
+
+	$('.searchForm').on('submit', function(event){
+		event.preventDefault();
+		var value = $(this).children('[name=search]').val();
+		app.ajaxCall(value);
+	});
+
+
+	
 }
 
 $(function(){

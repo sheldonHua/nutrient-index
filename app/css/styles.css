@@ -1,0 +1,16 @@
+body {
+  font-size: 13px;
+  font-family: arial, helvetica, sans-serif; }
+
+.food-container {
+  width: 1160px;
+  margin: 0 auto;
+  overflow: auto;
+  box-sizing: border-box; }
+
+.food {
+  border: 1px solid #ccc;
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  padding: 20px 30px; }
