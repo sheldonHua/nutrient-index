@@ -2,6 +2,7 @@ var app = {};
 
 app.key = 'a6bb05d3c2ee035be37486ffa23ee061';
 app.id = '49ee0fd8';
+app.calories = [];
 
 app.ajaxCall = function(searchTerm){
 	var nutritionApi = $.ajax({
@@ -14,45 +15,43 @@ app.ajaxCall = function(searchTerm){
 			format: 'json',
 		},
 		success: function(data){
-
 			app.displayData(data.hits);
 		}
-		
 	});	
 }
 
 app.displayData = function(foods){
-
-	var foodList = [];
-	for (var i = 0; i <= foods.length-1; i++){
-		var foodHTML = `
-			<div class="food">
-				<p>${foods[i].fields.item_name}</p>
-				<p>${foods[i].fields.brand_name}</p>
-				<p>Calories: ${foods[i].fields.nf_calories}</p>
-			</div>
-		`;
-
-		foodList.push(foodHTML);
-	}
-
-	
-
-	$('.food-container').append(foodList);
+	var foodList = foods.map(function(food){
+			var foodHTML = `
+				<div class="food">
+					<p>${food.fields.brand_name}</p>
+					<p>${food.fields.item_name}</p>
+					<p>Calories: <span class="calories">${food.fields.nf_calories}</span></p>
+				</div>
+			`;
+			return foodHTML;
+		}).join(' ');
 
 
+	$('.food-container .foodCall').html(foodList);
 }
 
-app.init = function(){
 
-	$('.searchForm').on('submit', function(event){
+app.init = function(){
+	$('form').on('submit', function(event){
 		event.preventDefault();
 		var value = $(this).children('[name=search]').val();
-		app.ajaxCall(value);
+		app.ajaxCall(value);	
 	});
 
+	$('.foodCall').on('click', '.food', function(){
+		var userSelected = $(this).find('.calories').text();
 
-	
+		app.calories.push(userSelected);
+
+
+	});
+
 }
 
 $(function(){
