@@ -6,7 +6,7 @@ app.calories = [];
 
 app.ajaxCall = function(searchTerm){
 	var nutritionApi = $.ajax({
-		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:10&fields=brand_name,nf_calories,item_name,brand_id`,
+		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:50&fields=brand_name,nf_calories,item_name,brand_id`,
 		type: 'GET',
 		dataType: 'json',
 		data:{
@@ -36,6 +36,16 @@ app.displayData = function(foods){
 	$('.food-container .foodCall').html(foodList);
 }
 
+app.totalNutrients = function(){
+	var sumOfNutrients = app.calories.map(function(calorie){
+		return parseFloat(calorie);
+	}).reduce(function(total, nutrient){
+		return total + nutrient;
+	}, 0);
+
+	console.log(sumOfNutrients)
+
+}
 
 app.init = function(){
 	$('form').on('submit', function(event){
@@ -46,9 +56,7 @@ app.init = function(){
 
 	$('.foodCall').on('click', '.food', function(){
 		var userSelected = $(this).find('.calories').text();
-
 		app.calories.push(userSelected);
-
 
 	});
 
