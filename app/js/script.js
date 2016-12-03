@@ -33,11 +33,11 @@ app.displayData = function(foods){
 					<div class="inner">
 						<p class="food-name">${food.fields.item_name}</p>
 						<p class="food-brand">${food.fields.brand_name}</p>
-						<p>Calories: <span class="calories">${food.fields.nf_calories}</span></p>
-						<p>Fat: <span class="fat">${food.fields.nf_total_fat}</span></p>
-						<p>Cholesterol: <span class="cholesterol">${food.fields.nf_cholesterol}</span></p>
-						<p>Sugars: <span class="sugars">${food.fields.nf_sugars}</span></p>
-						<p>Sodium: <span class="sodium">${food.fields.nf_sodium}</span></p>
+						<p class="nutri">Calories: <span class="calories">${food.fields.nf_calories}</span></p>
+						<p class="nutri">Fat: <span class="fat">${food.fields.nf_total_fat}</span></p>
+						<p class="nutri">Cholesterol: <span class="cholesterol">${food.fields.nf_cholesterol}</span></p>
+						<p class="nutri">Sugars: <span class="sugars">${food.fields.nf_sugars}</span></p>
+						<p class="nutri">Sodium: <span class="sodium">${food.fields.nf_sodium}</span></p>
 					</div>
 				</div>
 			`;
@@ -101,11 +101,11 @@ app.init = function(){
 	});
 
 	$('.reset').on('click', function(){
-		app.nutri.calories = 0;
-		app.nutri.fat = 0;
-		app.nutri.cholesterol = 0;
-		app.nutri.sugars = 0;
-		app.nutri.sodium = 0;
+		app.nutri.calories.length = 0;
+		app.nutri.fat.length  = 0;
+		app.nutri.cholesterol.length  = 0;
+		app.nutri.sugars.length  = 0;
+		app.nutri.sodium.length  = 0;
 
 		$('.nutri h1').html("0");
 
