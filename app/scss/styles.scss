@@ -18,8 +18,7 @@ body{
 }
 
 .hero-container{
-	height: 50vh;
-
+	margin-bottom:100px;
 	h1{
 		font-size:70px;
 		margin:0;
@@ -86,18 +85,34 @@ input[name="search"]{
 	
 		padding:20px;
 		background:#fcfcfc;
-
+		border:2px solid #fff;
 -webkit-box-shadow: 10px 10px 0px -2px rgba(221,221,221,1);
 -moz-box-shadow: 10px 10px 0px -2px rgba(221,221,221,1);
 box-shadow: 10px 10px 0px -2px rgba(221,221,221,1);
+
+	&:hover{
+			-webkit-box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
+	-moz-box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
+	box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
+			-webkit-transition: all 0.5s ease;  
+  -moz-transition: all 0.5s ease;  
+  -o-transition: all 0.5s ease;  
+  -ms-transition: all 0.5s ease;  
+  transition: all 0.5s ease;
+	}
+
 	}
 
 	.selected{
+		border:2px solid #fe8c34;
+		-webkit-transition: all 0.5s ease;  
+  -moz-transition: all 0.5s ease;  
+  -o-transition: all 0.5s ease;  
+  -ms-transition: all 0.5s ease;  
+  transition: all 0.5s ease;
 
-	-webkit-box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
-	-moz-box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
-	box-shadow: 10px 10px 0px -2px rgba(162,204,58,1);
 	}
+
 
 }
 .food-name{

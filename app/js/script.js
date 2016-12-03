@@ -2,11 +2,19 @@ var app = {};
 
 app.key = 'a6bb05d3c2ee035be37486ffa23ee061';
 app.id = '49ee0fd8';
-app.calories = [];
+app.nutri = {
+	calories: [],
+	fat: [],
+	cholesterol: [],
+	sugars: [],
+	sodium: []
+};
+
+
 
 app.ajaxCall = function(searchTerm){
 	var nutritionApi = $.ajax({
-		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:6&fields=brand_name,nf_calories,nf_total_fat,nf_cholesterol,nf_sugars,nf_sodium,item_name,brand_id`,
+		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:50&fields=brand_name,nf_calories,nf_total_fat,nf_cholesterol,nf_sugars,nf_sodium,item_name,brand_id`,
 		type: 'GET',
 		dataType: 'json',
 		data:{
@@ -29,9 +37,9 @@ app.displayData = function(foods){
 						<p class="food-brand">${food.fields.brand_name}</p>
 						<p>Calories: <span class="calories">${food.fields.nf_calories}</span></p>
 						<p>Fat: <span class="fat">${food.fields.nf_total_fat}</span></p>
-						<p>Cholesterol: <span class="fat">${food.fields.nf_cholesterol}</span></p>
-						<p>Sugars: <span class="fat">${food.fields.nf_sugars}</span></p>
-						<p>Sodium: <span class="fat">${food.fields.nf_sodium}</span></p>
+						<p>Cholesterol: <span class="cholesterol">${food.fields.nf_cholesterol}</span></p>
+						<p>Sugars: <span class="sugars">${food.fields.nf_sugars}</span></p>
+						<p>Sodium: <span class="sodium">${food.fields.nf_sodium}</span></p>
 					</div>
 				</div>
 			`;
@@ -42,18 +50,13 @@ app.displayData = function(foods){
 	$('.food-container .foodCall').html(foodList);
 }
 
-app.totalNutrients = function(){
-	var sumOfNutrients = app.calories
-	.map(function(calorie){
-		return parseFloat(calorie);
-	})
+app.totalNutrients = function(nutri, selector){
+	var sumOfNutrients = nutri
 	.reduce(function(total, nutrient){
 		return total + nutrient;
 	}, 0);
 
-	
-
-	$('.calories h1').html(sumOfNutrients);
+	$(selector).html(sumOfNutrients);
 
 }
 
@@ -65,12 +68,34 @@ app.init = function(){
 	});
 
 	$('.foodCall').on('click', '.food', function(){
-		var userSelected = $(this).find('.calories').text();
-		app.calories.push(userSelected);
-		$(this).children('.inner').addClass('selected');
+		var $this = $(this);
 
-		app.totalNutrients();
+		app.nutri.calories.push(parseFloat($this.find('.calories').text()));
+		app.nutri.fat.push(parseFloat($this.find('.fat').text()));
+		app.nutri.cholesterol.push(parseFloat($this.find('.cholesterol').text()));
+		app.nutri.sugars.push(parseFloat($this.find('.sugars').text()));
+		app.nutri.sodium.push(parseFloat($this.find('.sodium ').text()));
+
 	
+
+		app.totalNutrients(app.nutri.calories, '.calories h1');
+		app.totalNutrients(app.nutri.fat, '.fat h1');
+		app.totalNutrients(app.nutri.cholesterol, '.cholesterol h1');
+		app.totalNutrients(app.nutri.sugars, '.sugars h1');
+		app.totalNutrients(app.nutri.sodium, '.sodium h1');
+
+
+		
+
+
+
+		$(this).children('.inner').addClass('selected').delay(200).queue(function(next){
+			$(this).removeClass('selected');
+			next();
+		});
+
+
+
 	});
 
 	
