@@ -60,6 +60,23 @@ app.totalNutrients = function(nutri, selector){
 
 }
 
+app.parseData = function(dataSelected){
+	var data = dataSelected;
+	console.log(data);
+	
+	if (data === 'null'){
+		data = 0;
+		console.log("new:" + data);
+		return data;
+	}
+	else{
+		return data;
+
+	}
+
+	
+}
+
 app.init = function(){
 	$('form').on('submit', function(event){
 		event.preventDefault();
@@ -70,11 +87,20 @@ app.init = function(){
 	$('.foodCall').on('click', '.food', function(){
 		var $this = $(this);
 
-		app.nutri.calories.push(parseFloat($this.find('.calories').text()));
-		app.nutri.fat.push(parseFloat($this.find('.fat').text()));
-		app.nutri.cholesterol.push(parseFloat($this.find('.cholesterol').text()));
-		app.nutri.sugars.push(parseFloat($this.find('.sugars').text()));
-		app.nutri.sodium.push(parseFloat($this.find('.sodium ').text()));
+		app.nutri.calories.push(Math.round(parseFloat(app.parseData($this.find('.calories').text()))* 10) / 10);
+		app.nutri.fat.push(Math.round(parseFloat(app.parseData($this.find('.fat').text()))* 10) / 10);
+		app.nutri.cholesterol.push(Math.round(parseFloat(app.parseData($this.find('.cholesterol').text()))* 10) / 10);
+		app.nutri.sugars.push(Math.round(parseFloat(app.parseData($this.find('.sugars').text()))* 10) / 10);
+		app.nutri.sodium.push(Math.round(parseFloat(app.parseData($this.find('.sodium ').text()))* 10) / 10);
+
+		/*var caloriee = $this.find('.calories').text();
+
+		if ( caloriee === "null"){
+			caloriee = "0";
+
+			console.log(caloriee);
+			return caloriee;
+		}*/
 
 	
 
