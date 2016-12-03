@@ -1,16 +1,102 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
 body {
   font-size: 13px;
-  font-family: arial, helvetica, sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: #f9f8e5;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 140px; }
 
-.food-container {
-  width: 1160px;
+.wrapper {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto; }
+
+.hero-container {
+  height: 50vh; }
+  .hero-container h1 {
+    font-size: 70px;
+    margin: 0;
+    padding-top: 100px;
+    color: #fe8c34;
+    font-family: 'Anton', sans-serif;
+    text-align: center; }
+  .hero-container p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900; }
+
+.searchForm {
+  text-align: center;
+  margin-top: 70px; }
+
+input[name="search"] {
+  width: 50%;
+  border: none;
+  height: 20px;
+  font-size: 35px;
+  padding: 20px 10px;
+  border-radius: 3px; }
+
+.button {
+  background: #a2cc3a;
+  color: white;
+  height: 55px;
+  border: none;
+  width: 60px;
+  position: relative;
+  top: -5px;
+  font-size: 20px;
+  border-radius: 3px; }
+
+.foodCall {
+  box-sizing: border-box;
   margin: 0 auto;
-  overflow: auto;
-  box-sizing: border-box; }
+  width: 1160px;
+  overflow: hidden; }
 
 .food {
-  border: 1px solid #ccc;
-  width: 50%;
+  width: 33.3333%;
   float: left;
   box-sizing: border-box;
-  padding: 20px 30px; }
+  padding: 15px; }
+  .food .inner {
+    padding: 20px;
+    background: #fcfcfc;
+    -webkit-box-shadow: 10px 10px 0px -2px #dddddd;
+    -moz-box-shadow: 10px 10px 0px -2px #dddddd;
+    box-shadow: 10px 10px 0px -2px #dddddd; }
+  .food .selected {
+    -webkit-box-shadow: 10px 10px 0px -2px #a2cc3a;
+    -moz-box-shadow: 10px 10px 0px -2px #a2cc3a;
+    box-shadow: 10px 10px 0px -2px #a2cc3a; }
+
+.food-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0; }
+
+.food-brand {
+  margin-top: 0;
+  font-size: 11px; }
+
+.counter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff; }
+  .counter h1 {
+    margin: 0;
+    text-align: center; }
+  .counter h2 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: normal; }
+  .counter .nutri {
+    display: inline-block;
+    padding: 10px 20px;
+    border-right: 1px solid #eee; }
