@@ -22,6 +22,14 @@ app.ajaxCall = function(searchTerm){
 		},
 		success: function(data){
 			app.displayData(data.hits);
+			console.log(data.hits);
+
+			if (data.hits.length-1 > 6){
+				$('.foodCall').after('<button class="loadMore">More results</button>');
+			}
+			else{
+				$('.loadMore').remove();
+			}
 		}
 	});	
 }
@@ -33,17 +41,16 @@ app.displayData = function(foods){
 					<div class="inner">
 						<p class="food-name">${food.fields.item_name}</p>
 						<p class="food-brand">${food.fields.brand_name}</p>
-						<p class="nutri">Calories: <span class="calories">${food.fields.nf_calories}</span></p>
-						<p class="nutri">Fat: <span class="fat">${food.fields.nf_total_fat}</span></p>
-						<p class="nutri">Cholesterol: <span class="cholesterol">${food.fields.nf_cholesterol}</span></p>
-						<p class="nutri">Sugars: <span class="sugars">${food.fields.nf_sugars}</span></p>
-						<p class="nutri">Sodium: <span class="sodium">${food.fields.nf_sodium}</span></p>
+						<p class="nutri">Calories <span class="unit">(kcal)</span>: <span class="nutri-type calories">${food.fields.nf_calories}</span></p>
+						<p class="nutri">Fat <span class="unit">(g)</span>: <span class="nutri-type fat">${food.fields.nf_total_fat}</span></p>
+						<p class="nutri">Cholesterol <span class="unit">(mg)</span>: <span class="nutri-type cholesterol">${food.fields.nf_cholesterol}</span></p>
+						<p class="nutri">Sugars <span class="unit">(g)</span>: <span class="nutri-type sugars">${food.fields.nf_sugars}</span></p>
+						<p class="nutri">Sodium <span class="unit">(mg)</span>: <span class="nutri-type sodium">${food.fields.nf_sodium}</span></p>
 					</div>
 				</div>
 			`;
 			return foodHTML;
 		}).join(' ');
-
 
 	$('.food-container .foodCall').html(foodList);
 }
@@ -76,9 +83,10 @@ app.init = function(){
 		event.preventDefault();
 		var value = $(this).children('[name=search]').val();
 		app.ajaxCall(value);	
+
 	});
 
-	$('.foodCall').on('click', '.food', function(){
+	$('.food-container').on('click', '.food', function(){
 		var $this = $(this);
 
 		app.nutri.calories.push(app.parseData($this.find('.calories').text()));
@@ -97,6 +105,18 @@ app.init = function(){
 			$(this).removeClass('selected');
 			next();
 		});
+
+		
+
+	});
+
+	var n = 6;
+
+	$('.food-container').on('click', '.loadMore' , function(){
+			n = n + 6;
+			console.log(n)
+
+			$(`.foodCall .food:lt(${n})`).addClass('show');
 
 	});
 

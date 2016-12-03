@@ -72,22 +72,29 @@ input[name="search"] {
   float: left;
   box-sizing: border-box;
   padding: 15px; }
+  .food:nth-of-type(n+7) {
+    display: none; }
   .food .inner {
     padding: 20px;
     background: #fcfcfc;
     border: 2px solid #fff;
     -webkit-box-shadow: 10px 10px 0px -2px #dddddd;
     -moz-box-shadow: 10px 10px 0px -2px #dddddd;
-    box-shadow: 10px 10px 0px -2px #dddddd; }
+    box-shadow: 10px 10px 0px -2px #dddddd;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
     .food .inner:hover {
-      -webkit-box-shadow: 10px 10px 0px -2px #a2cc3a;
-      -moz-box-shadow: 10px 10px 0px -2px #a2cc3a;
-      box-shadow: 10px 10px 0px -2px #a2cc3a;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      -ms-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      -webkit-box-shadow: 11px 11px 0px -2px #a2cc3a;
+      -moz-box-shadow: 11px 11px 0px -2px #a2cc3a;
+      box-shadow: 11px 11px 0px -2px #a2cc3a;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
   .food .selected {
     border: 2px solid #fe8c34;
     -webkit-transition: all 0.5s ease;
@@ -95,12 +102,20 @@ input[name="search"] {
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease; }
-  .food .nutri span {
+  .food .nutri span.nutri-type {
     font-weight: bold;
     float: right;
-    width: 75%;
+    width: 65%;
     text-align: right;
     border-bottom: 1px dotted #000; }
+  .food .nutri .unit {
+    font-weight: normal;
+    float: none;
+    width: auto;
+    border-bottom: none; }
+
+.show {
+  display: block !important; }
 
 .food-name {
   font-weight: bold;
@@ -145,3 +160,17 @@ input[name="search"] {
       -o-transition: all 0.5s ease;
       -ms-transition: all 0.5s ease;
       transition: all 0.5s ease; }
+
+.loadMore {
+  padding: 12px 50px;
+  background: #fe8c34;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 17px;
+  margin-top: 15px;
+  cursor: pointer;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  margin-top: 40px; }
