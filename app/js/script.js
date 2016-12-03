@@ -10,8 +10,6 @@ app.nutri = {
 	sodium: []
 };
 
-
-
 app.ajaxCall = function(searchTerm){
 	var nutritionApi = $.ajax({
 		url: `https://api.nutritionix.com/v1_1/search/${searchTerm}?results=0:50&fields=brand_name,nf_calories,nf_total_fat,nf_cholesterol,nf_sugars,nf_sodium,item_name,brand_id`,
@@ -60,21 +58,17 @@ app.totalNutrients = function(nutri, selector){
 
 }
 
-app.parseData = function(dataSelected){
+app.parseData = function(dataSelected, nutriType){
 	var data = dataSelected;
-	console.log(data);
-	
+
 	if (data === 'null'){
 		data = 0;
-		console.log("new:" + data);
-		return data;
+		return Math.round((parseFloat(data)* 10) / 10);
 	}
 	else{
-		return data;
-
+		return Math.round((parseFloat(data)* 10) / 10);
 	}
 
-	
 }
 
 app.init = function(){
@@ -87,22 +81,11 @@ app.init = function(){
 	$('.foodCall').on('click', '.food', function(){
 		var $this = $(this);
 
-		app.nutri.calories.push(Math.round(parseFloat(app.parseData($this.find('.calories').text()))* 10) / 10);
-		app.nutri.fat.push(Math.round(parseFloat(app.parseData($this.find('.fat').text()))* 10) / 10);
-		app.nutri.cholesterol.push(Math.round(parseFloat(app.parseData($this.find('.cholesterol').text()))* 10) / 10);
-		app.nutri.sugars.push(Math.round(parseFloat(app.parseData($this.find('.sugars').text()))* 10) / 10);
-		app.nutri.sodium.push(Math.round(parseFloat(app.parseData($this.find('.sodium ').text()))* 10) / 10);
-
-		/*var caloriee = $this.find('.calories').text();
-
-		if ( caloriee === "null"){
-			caloriee = "0";
-
-			console.log(caloriee);
-			return caloriee;
-		}*/
-
-	
+		app.nutri.calories.push(app.parseData($this.find('.calories').text()));
+		app.nutri.fat.push(app.parseData($this.find('.fat').text()));
+		app.nutri.cholesterol.push(app.parseData($this.find('.cholesterol').text()));
+		app.nutri.sugars.push(app.parseData($this.find('.sugars').text()));
+		app.nutri.sodium.push(app.parseData($this.find('.sodium ').text()));
 
 		app.totalNutrients(app.nutri.calories, '.calories h1');
 		app.totalNutrients(app.nutri.fat, '.fat h1');
@@ -110,23 +93,23 @@ app.init = function(){
 		app.totalNutrients(app.nutri.sugars, '.sugars h1');
 		app.totalNutrients(app.nutri.sodium, '.sodium h1');
 
-
-		
-
-
-
 		$(this).children('.inner').addClass('selected').delay(200).queue(function(next){
 			$(this).removeClass('selected');
 			next();
 		});
 
-
-
 	});
 
-	
+	$('.reset').on('click', function(){
+		app.nutri.calories = 0;
+		app.nutri.fat = 0;
+		app.nutri.cholesterol = 0;
+		app.nutri.sugars = 0;
+		app.nutri.sodium = 0;
 
+		$('.nutri h1').html("0");
 
+	});
 }
 
 $(function(){

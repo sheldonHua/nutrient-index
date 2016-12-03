@@ -13,7 +13,8 @@ body {
 .wrapper {
   width: 100%;
   max-width: 1160px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  overflow: hidden; }
 
 .hero-container {
   margin-bottom: 100px; }
@@ -50,7 +51,15 @@ input[name="search"] {
   position: relative;
   top: -5px;
   font-size: 20px;
-  border-radius: 3px; }
+  border-radius: 3px;
+  cursor: pointer; }
+  .button:hover {
+    background: #85ab28;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
 
 .foodCall {
   box-sizing: border-box;
@@ -113,3 +122,20 @@ input[name="search"] {
     display: inline-block;
     padding: 10px 20px;
     border-right: 1px solid #eee; }
+  .counter .reset {
+    float: right;
+    padding: 10px 15px;
+    background: #a2cc3a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 17px;
+    margin-top: 15px;
+    cursor: pointer; }
+    .counter .reset:hover {
+      background: #85ab28;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
