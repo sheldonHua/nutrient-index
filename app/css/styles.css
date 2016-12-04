@@ -162,6 +162,7 @@ input[name="search"] {
       transition: all 0.5s ease; }
 
 .loadMore {
+  display: none;
   padding: 12px 50px;
   background: #fe8c34;
   color: #fff;
@@ -172,5 +173,4 @@ input[name="search"] {
   cursor: pointer;
   margin: 0 auto;
   text-align: center;
-  display: block;
   margin-top: 40px; }

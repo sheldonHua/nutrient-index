@@ -23,12 +23,13 @@ app.ajaxCall = function(searchTerm){
 		success: function(data){
 			app.displayData(data.hits);
 			console.log(data.hits);
+			app.n = 6;
 
 			if (data.hits.length-1 > 6){
-				$('.foodCall').after('<button class="loadMore">More results</button>');
+				$('.loadMore').addClass('show');
 			}
 			else{
-				$('.loadMore').remove();
+				$('.loadMore').removeClass('show');
 			}
 		}
 	});	
@@ -86,6 +87,8 @@ app.init = function(){
 
 	});
 
+
+
 	$('.food-container').on('click', '.food', function(){
 		var $this = $(this);
 
@@ -108,16 +111,20 @@ app.init = function(){
 
 		
 
+
 	});
 
-	var n = 6;
+	app.n = 6;
 
 	$('.food-container').on('click', '.loadMore' , function(){
-			n = n + 6;
-			console.log(n)
+			app.n = app.n + 6;
+			console.log(app.n)
+			$(`.foodCall .food:lt(${app.n})`).addClass('show');
 
-			$(`.foodCall .food:lt(${n})`).addClass('show');
-
+			if ($('.foodCall .food.show').length === $('.foodCall .food').length){
+				$('.loadMore').removeClass('show');
+				app.n = 0;
+			}
 	});
 
 	$('.reset').on('click', function(){
