@@ -116,6 +116,9 @@ input[name="search"] {
     float: none;
     width: auto;
     border-bottom: none; }
+  .food .nutri {
+    margin-bottom: 10px;
+    margin-top: 5px; }
 
 .show {
   display: block !important; }
@@ -127,7 +130,8 @@ input[name="search"] {
 
 .food-brand {
   margin-top: 0;
-  font-size: 11px; }
+  font-size: 11px;
+  margin-bottom: 10px; }
 
 .counter {
   position: fixed;
@@ -139,7 +143,7 @@ input[name="search"] {
     margin: 0;
     text-align: center; }
   .counter h2 {
-    font-size: 15px;
+    font-size: 13px;
     margin: 0;
     font-weight: normal; }
   .counter .nutri {
@@ -148,12 +152,12 @@ input[name="search"] {
     border-right: 1px solid #eee; }
   .counter .reset {
     float: right;
-    padding: 10px 15px;
+    padding: 10px 20px;
     background: #96bd36;
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 17px;
+    font-size: 16px;
     margin-top: 15px;
     cursor: pointer; }
     .counter .reset:hover {
@@ -166,7 +170,7 @@ input[name="search"] {
 
 .loadMore {
   display: none;
-  padding: 12px 50px;
+  padding: 12px 40px;
   background: #fe8c34;
   color: #fff;
   border: none;

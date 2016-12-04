@@ -77,7 +77,6 @@ app.parseData = function(dataSelected, nutriType){
 	else{
 		return Math.round((parseFloat(data)* 10) / 10);
 	}
-
 }
 
 app.init = function(){
@@ -88,8 +87,6 @@ app.init = function(){
 		app.ajaxCall(value);
 		
 	});
-
-
 
 	$('.food-container').on('click', '.food', function(){
 		var $this = $(this);
@@ -132,6 +129,7 @@ app.init = function(){
 		app.nutri.sodium.length  = 0;
 
 		$('.nutri h1').html("0");
+
 
 	});
 }
