@@ -108,7 +108,7 @@ input[name="search"] {
   .food .nutri span.nutri-type {
     font-weight: bold;
     float: right;
-    width: 65%;
+    width: 60%;
     text-align: right;
     border-bottom: 1px dotted #000; }
   .food .nutri .unit {
@@ -139,6 +139,8 @@ input[name="search"] {
   left: 0;
   width: 100%;
   background: #fff; }
+  .counter .red {
+    color: red; }
   .counter h1 {
     margin: 0;
     text-align: center; }
