@@ -42,24 +42,26 @@ input[name="search"] {
   padding: 20px 10px;
   border-radius: 3px; }
 
-.button {
-  background: #a2cc3a;
+.searchBtn {
+  background: #96bd36;
   color: white;
-  height: 55px;
+  height: 60px;
   border: none;
   width: 60px;
   position: relative;
-  top: -5px;
+  top: -3px;
   font-size: 20px;
   border-radius: 3px;
   cursor: pointer; }
-  .button:hover {
+  .searchBtn:hover {
     background: #85ab28;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease; }
+  .searchBtn i {
+    font-size: 26px; }
 
 .foodCall {
   box-sizing: border-box;
@@ -72,9 +74,10 @@ input[name="search"] {
   float: left;
   box-sizing: border-box;
   padding: 15px; }
-  .food:nth-of-type(n+7) {
+  .food:nth-of-type(n+10) {
     display: none; }
   .food .inner {
+    height: 221px;
     padding: 20px;
     background: #fcfcfc;
     border: 2px solid #fff;
@@ -146,7 +149,7 @@ input[name="search"] {
   .counter .reset {
     float: right;
     padding: 10px 15px;
-    background: #a2cc3a;
+    background: #96bd36;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -174,3 +177,10 @@ input[name="search"] {
   margin: 0 auto;
   text-align: center;
   margin-top: 40px; }
+  .loadMore:hover {
+    background: #f4832c;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease; }

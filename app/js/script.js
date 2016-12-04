@@ -23,7 +23,7 @@ app.ajaxCall = function(searchTerm){
 		success: function(data){
 			app.displayData(data.hits);
 			console.log(data.hits);
-			app.n = 6;
+			app.n = 9;
 
 			if (data.hits.length-1 > 6){
 				$('.loadMore').addClass('show');
@@ -63,14 +63,15 @@ app.totalNutrients = function(nutri, selector){
 	}, 0);
 
 	$(selector).html(sumOfNutrients);
-
 }
 
 app.parseData = function(dataSelected, nutriType){
 	var data = dataSelected;
 
+	//remove data with the value null
 	if (data === 'null'){
 		data = 0;
+		//round to 1 decimal place
 		return Math.round((parseFloat(data)* 10) / 10);
 	}
 	else{
@@ -83,8 +84,9 @@ app.init = function(){
 	$('form').on('submit', function(event){
 		event.preventDefault();
 		var value = $(this).children('[name=search]').val();
-		app.ajaxCall(value);	
-
+		console.log(value)
+		app.ajaxCall(value);
+		
 	});
 
 
@@ -108,13 +110,8 @@ app.init = function(){
 			$(this).removeClass('selected');
 			next();
 		});
-
-		
-
-
 	});
 
-	app.n = 6;
 
 	$('.food-container').on('click', '.loadMore' , function(){
 			app.n = app.n + 6;
