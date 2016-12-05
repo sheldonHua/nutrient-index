@@ -112,6 +112,14 @@ app.init = function(){
 		
 	});
 
+	$('[name="search"]').on('focus', function(){
+		$(this).attr('placeholder', '');
+	});
+
+	$('[name="search"]').on('blur', function(){
+		$(this).attr('placeholder', 'Enter a food or brand');
+	});
+
 	$('.food-container').on('click', '.food', function(){
 		var $this = $(this);
 
