@@ -153,14 +153,15 @@ app.init = function(){
 
 	$('.reset').on('click', function(){
 		app.nutri.calories.length = 0;
+		app.nutri.protein.length  = 0;
 		app.nutri.fat.length  = 0;
+		app.nutri.saturatedFat.length  = 0;
 		app.nutri.carbohydrates.length  = 0;
 		app.nutri.sugars.length  = 0;
 		app.nutri.sodium.length  = 0;
 		app.nutri.fiber.length  = 0;
 
 		$('.nutri h1').html("0").removeClass('red');
-
 
 	});
 }
